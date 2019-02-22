@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../Afbeeldingen/About Icon.png</file>
+        <file>../Afbeeldingen/Analyze Icon.png</file>
+        <file>../Afbeeldingen/Delete Icon.PNG</file>
+        <file>../Afbeeldingen/Help Icon.PNG</file>
+        <file>../Afbeeldingen/ImportIcon.jpg</file>
+        <file>../Afbeeldingen/Open Icon.png</file>
+        <file>../Afbeeldingen/Pause Icon.png</file>
+        <file>../Afbeeldingen/Play Icon.png</file>
+        <file>../Afbeeldingen/Run Icon 3.png</file>
+        <file>../Afbeeldingen/Run Icon.png</file>
+        <file>../Afbeeldingen/Run Settings.png</file>
+        <file>../Afbeeldingen/RunIcon2.png</file>
+        <file>../Afbeeldingen/Save Icon.PNG</file>
+        <file>../Afbeeldingen/Settings Icon.png</file>
+        <file>../Afbeeldingen/Stop Icon.png</file>
+        <file>../Afbeeldingen/timetableconstructor.jpg</file>
+    </qresource>
+</RCC>

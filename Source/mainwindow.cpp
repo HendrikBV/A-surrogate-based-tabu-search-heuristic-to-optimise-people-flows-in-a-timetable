@@ -1851,8 +1851,9 @@ void MainWindow::analyze_solution_finalize_view()
 // ABOUT
 void MainWindow::about()
 {
-    QString info = QStringLiteral("Egress Time and Travel Time Optimiser \n\nDeveloped by Hendrik Vermuyten"
-            "\nDate: June 2018"
+    QString info = QStringLiteral("Surrogate-based Tabu Search Heuristic" 
+            "\nto Optimise People Flows in a Timetable"
+            "\n\nDeveloped by Hendrik Vermuyten"
             "\n\nThis product was written in C++ and uses the "
             "\nDlib C++ machine learning library, "
             "\nsee http://dlib.net/."

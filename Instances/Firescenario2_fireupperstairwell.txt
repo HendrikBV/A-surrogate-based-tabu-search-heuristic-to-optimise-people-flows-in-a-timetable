@@ -1,0 +1,7 @@
+Firescenario1_fireupperstairwell
+
+4
+5	16.25	76.25
+6	41.25	76.25
+7	66.25	76.25
+8	91.25	77.5

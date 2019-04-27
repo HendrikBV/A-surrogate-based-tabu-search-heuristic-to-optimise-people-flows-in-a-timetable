@@ -1,0 +1,4 @@
+Firescenario1_firehallwayfloor3
+
+1
+10	41.25	60

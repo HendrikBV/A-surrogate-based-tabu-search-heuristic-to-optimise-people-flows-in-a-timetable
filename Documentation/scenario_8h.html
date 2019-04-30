@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MengeAlgorithm: timetable_instance_generator.h File Reference</title>
+<title>MengeAlgorithm: scenario.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,37 +63,47 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">timetable_instance_generator.h File Reference</div>  </div>
+<div class="title">scenario.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>An instance generator to generate problem instances for the algorithm.  
+<p>A set of global variables related to a specific evacuation scenario.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;QObject&gt;</code><br />
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;QString&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
 </div>
-<p><a href="timetable__instance__generator_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="scenario_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtimetable_1_1instance__generator.html">timetable::instance_generator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The class to generate timetable instances.  <a href="classtimetable_1_1instance__generator.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscenario_1_1group__firefighters.html">scenario::group_firefighters</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An obstacle represents walls etc. in a building.  <a href="structscenario_1_1group__firefighters.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacetimetable"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetimetable.html">timetable</a></td></tr>
-<tr class="memdesc:namespacetimetable"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace containing all elements related to the timetable and its optimisation. <br /></td></tr>
+<tr class="memitem:namespacescenario"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacescenario.html">scenario</a></td></tr>
+<tr class="memdesc:namespacescenario"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace containing all elements related to the elements defining a scenario. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a3fb0a384e499291da74d0e68422f1b88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacescenario.html#a3fb0a384e499291da74d0e68422f1b88">scenario::import_data</a> (const QString &amp;filename)</td></tr>
+<tr class="memdesc:a3fb0a384e499291da74d0e68422f1b88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to import the scenario data from a txt-file.  <a href="namespacescenario.html#a3fb0a384e499291da74d0e68422f1b88">More...</a><br /></td></tr>
+<tr class="separator:a3fb0a384e499291da74d0e68422f1b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45772c7289d03dd7cba8c1b91add9730"><td class="memItemLeft" align="right" valign="top"><a id="a45772c7289d03dd7cba8c1b91add9730"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacescenario.html#a45772c7289d03dd7cba8c1b91add9730">scenario::clear_data</a> ()</td></tr>
+<tr class="memdesc:a45772c7289d03dd7cba8c1b91add9730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the scenario data. <br /></td></tr>
+<tr class="separator:a45772c7289d03dd7cba8c1b91add9730"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An instance generator to generate problem instances for the algorithm. </p>
+<div class="textblock"><p>A set of global variables related to a specific evacuation scenario. </p>
 <dl class="section author"><dt>Author</dt><dd>Hendrik Vermuyten </dd></dl>
 
-<p class="definition">Definition in file <a class="el" href="timetable__instance__generator_8h_source.html">timetable_instance_generator.h</a>.</p>
+<p class="definition">Definition in file <a class="el" href="scenario_8h_source.html">scenario.h</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

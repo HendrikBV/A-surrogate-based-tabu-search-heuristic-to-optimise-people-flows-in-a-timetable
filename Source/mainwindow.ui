@@ -100,6 +100,9 @@
     <addaction name="actionImport_Solution"/>
     <addaction name="actionClear_Solution"/>
     <addaction name="separator"/>
+    <addaction name="actionImport_Scenario"/>
+    <addaction name="actionClear_Scenario"/>
+    <addaction name="separator"/>
     <addaction name="actionImport_Surrogate_Map"/>
     <addaction name="actionClear_Surrogate_Map"/>
     <addaction name="separator"/>
@@ -403,6 +406,24 @@
    </property>
    <property name="text">
     <string>Generate Timetable Instance</string>
+   </property>
+  </action>
+  <action name="actionImport_Scenario">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/Afbeeldingen/Open Icon.png</normaloff>:/Afbeeldingen/Open Icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Import_Scenario</string>
+   </property>
+  </action>
+  <action name="actionClear_Scenario">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/Afbeeldingen/Delete Icon.PNG</normaloff>:/Afbeeldingen/Delete Icon.PNG</iconset>
+   </property>
+   <property name="text">
+    <string>Clear_Scenario</string>
    </property>
   </action>
  </widget>

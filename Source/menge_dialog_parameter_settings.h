@@ -80,6 +80,12 @@ public:
      */
     double max_accel() const;
 
+    /*!
+     *	@brief		Return the simulation percentile, i.e. when x% of people have reached their destination, the simulation ends.
+     *  @returns    The simulation percentile.
+     */
+    double simulation_percentile() const;
+
 
 
     /*!
@@ -123,6 +129,12 @@ public:
      *  @param      val     The maximum acceleration of agents in the simulation.
      */
     void set_max_accel(double val);
+
+    /*!
+     *	@brief		Set the simulation percentile, i.e. when x% of people have reached their destination, the simulation ends.
+     *  @returns    val     The simulation percentile.
+     */
+    void set_simulation_percentile(double val);
 
 
 

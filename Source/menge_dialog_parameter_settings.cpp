@@ -27,6 +27,7 @@ namespace
     constexpr double max_accel_default = 50.0;
     constexpr float time_step_default = 0.02f;
     constexpr size_t sub_steps_default = 0;
+    constexpr double percentile_simulation = 1.0;
 }
 
 
@@ -39,6 +40,7 @@ void menge_dialog_parameter_settings::reset_values()
     ui->doubleSpinBox_main_prefspeedstddev->setValue(pref_speed_stddev_default);
     ui->doubleSpinBox_main_maxspeed->setValue(max_speed_default);
     ui->doubleSpinBox_main_maxaccel->setValue(max_accel_default);
+    ui->doubleSpinBox_simulationpercentile->setValue(percentile_simulation);
 }
 
 
@@ -78,6 +80,11 @@ double menge_dialog_parameter_settings::max_speed() const
 double menge_dialog_parameter_settings::max_accel() const
 {
     return ui->doubleSpinBox_main_maxaccel->value();
+}
+
+double menge_dialog_parameter_settings::simulation_percentile() const
+{
+    return ui->doubleSpinBox_simulationpercentile->value();
 }
 
 
@@ -126,7 +133,10 @@ void menge_dialog_parameter_settings::set_max_accel(double val)
     ui->doubleSpinBox_main_maxaccel->setValue(val);
 }
 
-
+void menge_dialog_parameter_settings::set_simulation_percentile(double val)
+{
+    ui->doubleSpinBox_simulationpercentile->setValue(val);
+}
 
 
 

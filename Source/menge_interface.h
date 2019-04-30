@@ -171,6 +171,17 @@ namespace ped
         float max_sim_duration() { return SIM_DURATION; }
 
         /*!
+         *	@brief		The percentile of people who have reached their destination,
+         *              that is used to calculate the simulation (travel/evacuation)
+         *              time.
+         *
+         *  1 = last person
+         *  0.95 = 95% of people have reached destination
+         *  etc.
+         */
+        double _percentile_simulation_stopping_criterion = 1;
+
+        /*!
          *	@brief		The mean preferred free walking speed of agents.
          */
         double _Common_pref_speed = 1.34;
@@ -316,7 +327,7 @@ namespace ped
         double _Common_obstacleSet = 1.0;
         double _Common_neighbor_dist = 5.0;
         double _Common_r = 0.2;
-        double _Common_class = 3.0;
+        int _Common_class = 3;
 
         /*!
          *	@brief		The location of the executable - for basic executable resources.

@@ -31,6 +31,9 @@
 #include <random>
 #include <chrono>
 
+#include "scenario.h"
+
+#include <cstdio>
 
 
 
@@ -404,7 +407,7 @@ namespace ped
 
         CorePluginEngine plugins( &simDB );
         logger.line();
-        std::string pluginPath = "C:/Users/hendr/OneDrive/Documenten/Hendrik/PhD/QtProjects/Algorithm_Menge";
+        std::string pluginPath = "C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge";
         logger << Logger::INFO_MSG << "Plugin path: " << pluginPath;
         plugins.loadPlugins( pluginPath );
         if ( simDB.modelCount() == 0 ) {
@@ -427,10 +430,10 @@ namespace ped
         double result;
         if(timetable::nb_locations > 25)
              result = simulate( simDBEntry, "behavior.xml", "scene.xml",
-                                       "", "", VISUALIZE, "officeV.xml", "" );
+                                       "Menge_simulation_output.txt", "Hendrik", VISUALIZE, "officeV.xml", "" );
         else
              result = simulate( simDBEntry, "behavior.xml", "scene.xml",
-                                       "", "", VISUALIZE, "officeV2.xml", "" );
+                                       "Menge_simulation_output.txt", "Hendrik", VISUALIZE, "officeV2.xml", "" );
 
         if ( std::fabs(result - 1) < 0.001 ) {
             //std::cerr << "Simulation terminated through error.  See error log for details.\n";
@@ -475,7 +478,7 @@ namespace ped
             logger.line();
             logger << Logger::INFO_MSG << "Initializing visualization...";
             VisPluginEngine visPlugins;
-            visPlugins.loadPlugins( "C:/Users/hendr/OneDrive/Documenten/Hendrik/PhD/QtProjects/Algorithm_Menge" );
+            visPlugins.loadPlugins( "C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge" );
 
             TextWriter::setDefaultFont( os::path::join( 2, ROOT.c_str(), "arial.ttf" ) );
 
@@ -540,8 +543,73 @@ namespace ped
         }
 
 
-        logger << Logger::INFO_MSG << "Simulation time: " << dbEntry->simDuration() << "\n";
-        return dbEntry->simDuration();
+
+        ////////////
+        // Based on the percentile of people evacuated to safety
+        double simulation_time = dbEntry->simDuration();
+        if(simulation_time < 0.0001)
+        {
+            // do nothing
+        }
+        else if(_percentile_simulation_stopping_criterion > 0.991)
+        {
+            simulation_time = dbEntry->simDuration();
+        }
+        else
+        {
+            std::ifstream file;
+            file.open("Menge_simulation_output.txt");
+
+            std::string txt;
+            size_t agt_count;
+
+            file >> txt;        // "AgentCount"
+            file >> agt_count;  // value for AgentCount
+            file >> txt;        // "Time"
+            file >> txt;        // "NBAgentsFinished"
+            file >> txt;        // "PercentageAgentsFinished"
+
+            int it = 0;
+            while(true)
+            {
+                ++it;
+
+                double time, pct;
+                size_t nba;
+
+                file >> time;
+                file >> nba;
+                file >> pct;
+
+                if(pct >= _percentile_simulation_stopping_criterion - 0.0001)
+                {
+                    simulation_time = time;
+                    break;
+                }
+
+                // exit if last line of file reached
+                if(nba == agt_count - 1)
+                {
+                    simulation_time = time;
+                    break;
+                }
+
+                /*if(it > 1000)
+                {
+                    time = 0.0;
+                    QString msg = "End of file reached.\nSimulation time: ";
+                    msg.append(QString::number(time));
+                    signal_status(msg);
+                    simulation_time = time;
+                    break;
+                }*/
+            }
+        }
+
+        ////////////
+
+        logger << Logger::INFO_MSG << "Simulation time: " << simulation_time << "\n";
+        return simulation_time;
     }
 
 
@@ -586,6 +654,79 @@ namespace ped
 
                 stream << "\n</GoalSet>";
 
+
+
+                ///////////////////////////////
+                // SCENARIO DEFINITION FIREFIGHTERS
+                if(scenario::data_exist)
+                {
+                    // 1. Goalset for destinations firefighters
+                    stream << "\n<GoalSet id=\"2\">";
+                        for(int i = 0; i < scenario::firefighter_groups.size(); ++i)
+                        {
+                            stream << "\n<Goal capacity=\"1000000\" id=\"" << i << "\" type=\"point\" weight=\"1.00\" x=\""
+                                       << scenario::firefighter_groups[i].destination_x << "\" y=\"" << scenario::firefighter_groups[i].destination_y << "\"/>";
+                        }
+                    stream << "\n</GoalSet>";
+
+                    // 2. Transitions
+                    for(int i = 0; i < scenario::firefighter_groups.size(); ++i)
+                    {
+                        stream << "\n<Transition from=\"FirefightersTarget" << i << "\" to=\"FirefightersTargetReached\">";
+                            stream << "\n<Condition type=\"goal_reached\" distance=\"2.0\"/>";
+                        stream << "\n</Transition>";
+                    }
+
+                    stream << "\n<Transition from=\"FirefightersTargetReached\" to=\"Stop\">";
+                        stream << "\n<Condition type=\"auto\"/>";
+                    stream << "\n</Transition>";
+
+                    // 2.bis Transitions stairs
+                    for(int j = 0; j < building::stairs.size(); ++j)
+                    {
+                        stream << "\n<Transition from=\"";
+                        for(int i = 0; i < scenario::firefighter_groups.size(); ++i)
+                        {
+                            stream << "FirefightersTarget" << i;
+
+                            if(i < scenario::firefighter_groups.size()-1)
+                                stream << ",";
+                        }
+                        stream << "\" to=\"Stairs" << j << "\">";
+                            stream << "\n<Condition type=\"AABB\" inside=\"1\" min_x=\"" << building::stairs[j].from_x_min
+                                   << "\" max_x=\"" << building::stairs[j].from_x_max << "\" min_y=\"" << building::stairs[j].from_y_min
+                                   << "\" max_y=\"" << building::stairs[j].from_y_max << "\"/>";
+                        stream << "\n</Transition>";
+                    }
+
+
+                    // 3. States
+                    for(int i = 0; i < scenario::firefighter_groups.size(); ++i)
+                    {
+                        stream << "\n<State name=\"FirefightersTarget" << i << "\" final=\"0\">";
+                            stream << "\n<GoalSelector type=\"explicit\" goal_set=\"2\" goal=\"" << i << "\"/>";
+                            stream << "\n<VelComponent type=\"road_map\" file_name=\"" << building::road_map_file_name << "\"/>";
+                        stream << "\n</State>";
+                    }
+                    stream << "\n<State name=\"FirefightersTargetReached\" final=\"0\">";
+                    stream << "\n</State>";
+
+                    /*stream << "\n<State name=\"FirefightersTargetReached\" final=\"0\">";
+                    if(VISUALIZE)
+                    {
+                        stream << "\n<Action type=\"teleport\" dist=\"u\" min_x=\"" << building::teleport_locations_rooms[i].x - 1
+                               << "\" max_x=\"" << building::teleport_locations_rooms[i].x + 1 << "\" min_y=\""
+                               << building::teleport_locations_rooms[i].y - 1 << "\" max_y=\"" << building::teleport_locations_rooms[i].y + 1 << "\"/>";
+                    }
+                    else
+                    {
+                        stream << "\n<Action type=\"teleport\" dist=\"u\" min_x=\"" << 10000
+                                   << "\" max_x=\"" << 500000 << "\" min_y=\""
+                                   << 10000 << "\" max_y=\"" << 500000 << "\"/>";
+                    }
+                    stream << "\n</State>";*/
+                }
+                ///////////////////////////////
 
 
                 // One final state
@@ -798,6 +939,38 @@ namespace ped
 
                 stream << "\n</AgentProfile>";
 
+
+                ///////////////////////////////
+                // SCENARIO DEFINITION FIREFIGHTERS
+                if(scenario::data_exist)
+                {
+                    stream << "\n\n<AgentProfile name=\"group2\" inherits=\"group1\">"
+                           << "\n<Common class=\"2\"/>"
+                           << "\n</AgentProfile>";
+
+                    for(int i = 0; i < scenario::firefighter_groups.size(); ++i)
+                    {
+                        std::uniform_int_distribution<int> dist_target(0, building::exit_targets.size() - 1);
+                        int target_index = dist_target(generator);
+
+                        stream << "\n<AgentGroup>";
+                            stream << "\n<ProfileSelector type=\"const\" name=\"group2\"/>";
+                            stream << "\n<StateSelector type=\"const\" name=\"FirefightersTarget" << i << "\"/>";
+                            stream << "\n<Generator type=\"rect_grid\" "
+                                   << "anchor_x=\"" << building::exit_targets[target_index].x << "\" "
+                                   << "anchor_y=\"" << building::exit_targets[target_index].y << "\" "
+                                   << "offset_x=\"0.1\" "
+                                   << "offset_y=\"0.1\" "
+                                   << "count_x=\"" << scenario::firefighter_groups[i].nb_firefighters / 5.0 << "\" "
+                                   << "count_y=\"" << 5 << "\" "
+                                   << "displace_dist=\"u\" "
+                                   << "displace_min=\"0.0\" "
+                                   << "displace_max=\"0.05\""
+                                   << "/>";
+                        stream << "\n</AgentGroup>";
+                    }
+                }
+                ///////////////////////////////
 
 
                 // AgentGroups: one group per event-room

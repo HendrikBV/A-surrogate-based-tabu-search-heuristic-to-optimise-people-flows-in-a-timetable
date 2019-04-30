@@ -9,8 +9,7 @@ help_menu::help_menu(QWidget *parent) :  QDialog(parent), ui(new Ui::help_menu)
 
     QString document;
     document = QStringLiteral(
-        "<a name = top><H1>How to use the surrogate-based tabu search heuristic</H1></a>"
-        // to do
+        "<a name = top><H1>How to use the Tabu Search Heuristic</H1></a>"
         );
 
 

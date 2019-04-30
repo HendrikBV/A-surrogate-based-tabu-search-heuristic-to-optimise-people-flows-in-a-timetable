@@ -34,6 +34,8 @@ void MainWindow::make_connections()
     //connect(ui->actionSave_Decision_Functions, SIGNAL(triggered(bool)), this, SLOT(save_decision_functions()));
     connect(ui->actionReset_Surrogates, SIGNAL(triggered(bool)), this, SLOT(clear_surrogates()));
     connect(ui->actionImport_Relevant_Timeslots_Traveltimes, SIGNAL(triggered(bool)), this, SLOT(import_relevant_timeslots_traveltimes()));
+    connect(ui->actionImport_Scenario, SIGNAL(triggered(bool)), this, SLOT(import_scenario()));
+    connect(ui->actionClear_Scenario, SIGNAL(triggered(bool)), this, SLOT(clear_scenario()));
 
 
     // Running algorithm
@@ -395,6 +397,65 @@ void MainWindow::clear_existing_solution()
 
     chart_evacuations->removeAllSeries();
     chart_traveltimes->removeAllSeries();
+}
+
+
+void MainWindow::import_scenario()
+{
+    if(scenario::data_exist)
+    {
+        int result = QMessageBox::warning(nullptr,
+                              tr("Warning!"),
+                              tr("Importing new data will erase old data!\nDo you want to continue?"),
+                              QMessageBox::Yes | QMessageBox::No);
+
+        if(result == QMessageBox::No)
+            return;
+    }
+
+
+    QString file_name = QFileDialog::getOpenFileName(nullptr,
+                                                     tr("Input File"),
+                                                     QDir::currentPath(),
+                                                     tr("Text Files (*.txt)"));
+
+    if(file_name.isEmpty())
+        return;
+
+
+    try
+    {
+        scenario::import_data(file_name);
+        QMessageBox::information(nullptr,
+                              tr(""),
+                              tr("Scenario successfully imported!"),
+                              QMessageBox::Ok | QMessageBox::Default);
+    }
+    catch(const std::exception& ex)
+    {
+        QMessageBox::critical(nullptr,
+                              tr("Error occured!"),
+                              ex.what(),
+                              QMessageBox::Ok | QMessageBox::Default);
+    }
+
+}
+
+
+void MainWindow::clear_scenario()
+{
+    if(scenario::data_exist)
+    {
+        int result = QMessageBox::warning(nullptr,
+                              tr("Warning!"),
+                              tr("Are you sure you want to delete the scenario?"),
+                              QMessageBox::Yes | QMessageBox::No);
+
+        if (result == QMessageBox::No)
+            return;
+    }
+
+    scenario::clear_data();
 }
 
 
@@ -1137,7 +1198,7 @@ void MainWindow::settings_menge()
     dialog.set_pref_speed_stddev(mengeinterface._Common_pref_speed_stddev);
     dialog.set_max_speed(mengeinterface._Common_max_speed);
     dialog.set_max_accel(mengeinterface._Common_max_accel);
-
+    dialog.set_simulation_percentile(mengeinterface._percentile_simulation_stopping_criterion);
 
 
     if(dialog.exec() == QDialog::Accepted)
@@ -1149,6 +1210,7 @@ void MainWindow::settings_menge()
         mengeinterface._Common_pref_speed_stddev = dialog.pref_speed_stddev();
         mengeinterface._Common_max_speed = dialog.max_speed();
         mengeinterface._Common_max_accel = dialog.max_accel();
+        mengeinterface._percentile_simulation_stopping_criterion = dialog.simulation_percentile();
     }
 }
 
@@ -1851,8 +1913,7 @@ void MainWindow::analyze_solution_finalize_view()
 // ABOUT
 void MainWindow::about()
 {
-    QString info = QStringLiteral("Surrogate-based Tabu Search Heuristic" 
-            "\nto Optimise People Flows in a Timetable"
+    QString info = QStringLiteral("Surrogate-based Tabu Search Heuristic"
             "\n\nDeveloped by Hendrik Vermuyten"
             "\n\nThis product was written in C++ and uses the "
             "\nDlib C++ machine learning library, "

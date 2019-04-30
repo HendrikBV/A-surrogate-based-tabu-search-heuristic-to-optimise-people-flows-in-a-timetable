@@ -53,6 +53,7 @@
 #include <chrono>
 
 #include "building_data.h"
+#include "scenario.h"
 #include "menge_interface.h"
 #include "timetable_global_data.h"
 #include "timetable_solution.h"
@@ -259,6 +260,16 @@ private slots:
      *	@brief		Clear the current solution.
      */
     void clear_existing_solution();
+
+    /*!
+     *	@brief		Import the scenario data from a txt-file.
+     */
+    void import_scenario();
+
+    /*!
+     *	@brief		Clear the scenario data.
+     */
+    void clear_scenario();
 
     /*!
      *	@brief		Import a surrogate map from a txt-file.

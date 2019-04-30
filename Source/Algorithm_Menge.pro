@@ -26,36 +26,36 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/thirdParty
-INCLUDEPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/thirdParty/SDL
-INCLUDEPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/thirdParty/tclap
-INCLUDEPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/include
-INCLUDEPATH += ../../../../../../Downloads/Menge-master/Menge-master/src
-INCLUDEPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/Menge
+INCLUDEPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/thirdParty
+INCLUDEPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/thirdParty/SDL
+INCLUDEPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/thirdParty/tclap
+INCLUDEPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/include
+INCLUDEPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src
+INCLUDEPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/Menge
 
-INCLUDEPATH += ../../../../../../Downloads/dlib-19.10/dlib-19.10/
-
-
-
-DEPENDPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/thirdParty
-DEPENDPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/thirdParty/SDL
-DEPENDPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/thirdParty/tclap
-DEPENDPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/include
-DEPENDPATH += ../../../../../../Downloads/Menge-master/Menge-master/src
-DEPENDPATH += ../../../../../../Downloads/Menge-master/Menge-master/src/Menge
+INCLUDEPATH += C:/Users/hendr/Downloads/dlib-19.10/dlib-19.10/
 
 
 
+DEPENDPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/thirdParty
+DEPENDPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/thirdParty/SDL
+DEPENDPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/thirdParty/tclap
+DEPENDPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/include
+DEPENDPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src
+DEPENDPATH += C:/Users/hendr/Downloads/Menge-master/Menge-master/src/Menge
 
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/AgtDummy.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/AgtGCF.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/AgtHelbing.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/AgtJohansson.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/AgtKaramouzas.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/AgtZanlungo.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/MengeCore.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/MengeVis.lib
-LIBS += ../../../../../../QtProjects/Algorithm_Menge/tinyxml.lib
+
+
+
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/AgtDummy.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/AgtGCF.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/AgtHelbing.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/AgtJohansson.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/AgtKaramouzas.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/AgtZanlungo.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/MengeCore.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/MengeVis.lib
+LIBS += C:/Users/hendr/OneDrive/Documenten/Hendrik/QtProjects/Algorithm_Menge/tinyxml.lib
 
 
 SOURCES += \
@@ -70,14 +70,15 @@ SOURCES += \
     menge_dialog_start_analysis.cpp \
     menge_dialog_parameter_settings.cpp \
     machine_learning_interface.cpp \
-    ../../../../../../Downloads/dlib-19.10/dlib-19.10/dlib/all/source.cpp \
     logger.cpp \
     dialog_algorithm_settings.cpp \
     dialog_start_algorithm.cpp \
     dialog_compare_learning_methods.cpp \
     timetable_tabu_search.cpp \
     timetable_instance_generator.cpp \
-    dialog_instance_generator.cpp
+    dialog_instance_generator.cpp \
+    C:/Users/hendr/Downloads/dlib-19.10/dlib-19.10/dlib/all/source.cpp \
+    scenario.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -96,7 +97,8 @@ HEADERS += \
     dialog_compare_learning_methods.h \
     timetable_tabu_search.h \
     timetable_instance_generator.h \
-    dialog_instance_generator.h
+    dialog_instance_generator.h \
+    scenario.h
 
 FORMS += \
         mainwindow.ui \

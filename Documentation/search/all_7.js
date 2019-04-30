@@ -37,5 +37,6 @@ var searchData=
   ['get_5freplicationbudget_5fts',['get_replicationbudget_TS',['../classdialog__algorithm__settings.html#ac02f6ff657f5e9d9a7484392755aa3e8',1,'dialog_algorithm_settings']]],
   ['get_5ftabu_5flist_5flength',['get_tabu_list_length',['../classtimetable_1_1tabu__search.html#a3a53f54f032c1bf69ee67f7cf1775386',1,'timetable::tabu_search']]],
   ['get_5ftabulistlength',['get_tabulistlength',['../classdialog__algorithm__settings.html#aca3ade20b28799bebdbaa7021f9f7804',1,'dialog_algorithm_settings']]],
-  ['global',['global',['../namespaceglobal.html',1,'']]]
+  ['global',['global',['../namespaceglobal.html',1,'']]],
+  ['group_5ffirefighters',['group_firefighters',['../structscenario_1_1group__firefighters.html',1,'scenario']]]
 ];

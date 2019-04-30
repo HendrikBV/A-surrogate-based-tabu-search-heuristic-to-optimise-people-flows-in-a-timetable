@@ -9,6 +9,7 @@ var searchData=
   ['_5fnb_5feval_5flocal_5fminimum_5fdefault',['_nb_eval_local_minimum_default',['../classtimetable_1_1tabu__search.html#aae93c4deb9af2dd4f16dbaf6757855a9',1,'timetable::tabu_search']]],
   ['_5fnb_5feval_5fmenge_5fincremental_5fdefault',['_nb_eval_menge_incremental_default',['../classtimetable_1_1tabu__search.html#a5c95dfb6d1ca2e214ba73be9c876acdd',1,'timetable::tabu_search']]],
   ['_5fnb_5feval_5fmenge_5fvalidate_5fdefault',['_nb_eval_menge_validate_default',['../classtimetable_1_1tabu__search.html#acee098c01ee36e4a2c4e05210b881574',1,'timetable::tabu_search']]],
+  ['_5fpercentile_5fsimulation_5fstopping_5fcriterion',['_percentile_simulation_stopping_criterion',['../classped_1_1menge__interface.html#af167196fa5d76119ca09f70a4f2fe13c',1,'ped::menge_interface']]],
   ['_5freplication_5fbudget_5fidentification_5fstep_5fdefault',['_replication_budget_identification_step_default',['../classtimetable_1_1tabu__search.html#a817047fd761f5b4213405a28b09c198a',1,'timetable::tabu_search']]],
   ['_5freplication_5fbudget_5ftabu_5fsearch_5fdefault',['_replication_budget_tabu_search_default',['../classtimetable_1_1tabu__search.html#aabdcd4f3726c69567285afdc8cebabe3',1,'timetable::tabu_search']]],
   ['_5fstream_5ftype',['_stream_type',['../classglobal_1_1logger.html#aa151eddfe88006d2547ab2df21bd7dad',1,'global::logger']]],

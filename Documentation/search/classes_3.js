@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger',['logger',['../classglobal_1_1logger.html',1,'global']]]
+  ['instance_5fgenerator',['instance_generator',['../classtimetable_1_1instance__generator.html',1,'timetable']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tabu_5fsearch',['tabu_search',['../classtimetable_1_1tabu__search.html',1,'timetable']]],
-  ['target',['target',['../structbuilding_1_1target.html',1,'building']]],
-  ['teleport_5flocation',['teleport_location',['../structbuilding_1_1teleport__location.html',1,'building']]]
+  ['solution',['solution',['../classtimetable_1_1solution.html',1,'timetable']]],
+  ['stairs_5felement',['stairs_element',['../structbuilding_1_1stairs__element.html',1,'building']]],
+  ['surrogate_5fpaths',['surrogate_paths',['../classml_1_1surrogate__paths.html',1,'ml']]]
 ];

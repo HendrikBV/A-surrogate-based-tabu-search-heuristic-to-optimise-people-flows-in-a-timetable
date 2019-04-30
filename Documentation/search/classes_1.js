@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['help_5fmenu',['help_menu',['../classhelp__menu.html',1,'']]]
+  ['group_5ffirefighters',['group_firefighters',['../structscenario_1_1group__firefighters.html',1,'scenario']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['import_5fdata',['import_data',['../namespacebuilding.html#a938732f5e06dbda77c580c1913aea737',1,'building']]],
+  ['import_5fdata',['import_data',['../namespacebuilding.html#a938732f5e06dbda77c580c1913aea737',1,'building::import_data()'],['../namespacescenario.html#a3fb0a384e499291da74d0e68422f1b88',1,'scenario::import_data()']]],
   ['import_5fdecision_5ffunction_5fevacuations',['import_decision_function_evacuations',['../classml_1_1machine__learning__interface.html#ae66864b581514048a8dea94f0629eb3e',1,'ml::machine_learning_interface']]],
   ['import_5fdecision_5ffunction_5ftravels',['import_decision_function_travels',['../classml_1_1machine__learning__interface.html#a0d56316d3e3292c6a2dc5cbae386fc8e',1,'ml::machine_learning_interface']]],
   ['is_5fempty',['is_empty',['../classtimetable_1_1solution.html#a9c0e07be0d6531d2a9d8d3e52fd82b2d',1,'timetable::solution']]],
